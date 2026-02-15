@@ -14,18 +14,50 @@
             --whatsapp: #25D366; --telegram: #0088cc; --wechat: #07C160; --waze: #33ccff; --gmaps: #4285F4; 
         }
 
-        /* --- [新增装饰]：不影响布局的节日元素 --- */
+        /* --- [休息通知弹窗样式] --- */
+        .holiday-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 10005; 
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .holiday-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 85%;
+            width: 320px;
+            border: 3px solid var(--gold);
+            position: relative;
+            box-shadow: 0 0 30px rgba(211, 47, 47, 0.5);
+        }
+        .holiday-content h3 { color: var(--cny-red); margin: 10px 0; }
+        .holiday-content p { font-weight: bold; font-size: 1.1rem; line-height: 1.8; margin: 15px 0; }
+        .close-holiday-btn {
+            background: var(--cny-red);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        /* --- [原本的装饰代码] --- */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; color: #333; line-height: 1.6; 
             background-color: #fff; 
             scroll-behavior: smooth;
-            /* 浅浅的节日底纹 */
             background-image: radial-gradient(#fff5f5 10%, transparent 10%);
             background-size: 30px 30px;
         }
 
-        /* 顶部悬挂灯笼 */
         body::before, body::after {
             content: "🏮";
             position: fixed;
@@ -44,16 +76,13 @@
             to { transform: rotate(6deg); }
         }
 
-        /* 红包雨 */
         .cny-rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; overflow: hidden; }
         .red-packet { position: absolute; color: #d32f2f; font-size: 20px; animation: fall linear infinite; }
         @keyframes fall {
             0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(110vh) rotate(360deg); opacity: 0.4; }
         }
-        /* --- [装饰结束] --- */
         
-        /* [保留原样]：导航栏 */
         nav { background: linear-gradient(90deg, #000, var(--cny-red)); color: white; padding: 0.8rem 1.2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: bold; }
         .nav-logo img { height: 40px; border-radius: 4px; background: #fff; padding: 2px; }
@@ -118,6 +147,19 @@
     </style>
 </head>
 <body>
+
+<div class="holiday-overlay" id="holidayModal">
+    <div class="holiday-content">
+        <div style="font-size: 40px; margin-bottom: 5px;">🧧</div>
+        <h3>春节休息通知</h3>
+        <p>
+            初一 (Feb 17) <span style="color:var(--cny-red)">休息 (OFF)</span><br>
+            初二 (Feb 18) <span style="color:var(--cny-red)">休息 (OFF)</span><br>
+            <span style="font-size: 0.9rem; color: #666; font-weight: normal;">初三 (Feb 19) 照常营业</span>
+        </p>
+        <button class="close-holiday-btn" onclick="document.getElementById('holidayModal').style.display='none'">我知道了 (Close)</button>
+    </div>
+</div>
 
 <div class="cny-rain" id="cnyRain"></div>
 
@@ -304,7 +346,6 @@
 </div>
 
 <script>
-    // 1. 原有的预订逻辑（已恢复所有 Therapist 逻辑）
     function toggleSecondStaff() { document.getElementById('secondStaffGroup').style.display = document.getElementById('duration').value.includes("Double") ? "block" : "none"; }
     document.getElementById('bookingForm').onsubmit = function(e) {
         e.preventDefault();
@@ -313,7 +354,6 @@
         window.open(`https://wa.me/60149929316?text=${text}`, '_blank');
     };
 
-    // 2. 新增：新年红包/花瓣雨脚本
     const rainContainer = document.getElementById('cnyRain');
     const icons = ['🧧', '🌸', '🏮', '✨'];
     for (let i = 0; i < 12; i++) {
