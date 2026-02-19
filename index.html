@@ -14,41 +14,6 @@
             --whatsapp: #25D366; --telegram: #0088cc; --wechat: #07C160; --waze: #33ccff; --gmaps: #4285F4; 
         }
 
-        /* --- [休息通知弹窗样式] --- */
-        .holiday-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 10005; 
-            display: flex; align-items: center; justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-        .holiday-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 85%;
-            width: 320px;
-            border: 3px solid var(--gold);
-            position: relative;
-            box-shadow: 0 0 30px rgba(211, 47, 47, 0.5);
-        }
-        .holiday-content h3 { color: var(--cny-red); margin: 10px 0; }
-        .holiday-content p { font-weight: bold; font-size: 1.1rem; line-height: 1.8; margin: 15px 0; }
-        .close-holiday-btn {
-            background: var(--cny-red);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        /* --- [原本的装饰代码] --- */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; color: #333; line-height: 1.6; 
@@ -148,19 +113,6 @@
 </head>
 <body>
 
-<div class="holiday-overlay" id="holidayModal">
-    <div class="holiday-content">
-        <div style="font-size: 40px; margin-bottom: 5px;">🧧</div>
-        <h3>春节休息通知</h3>
-        <p>
-            初一 (Feb 17) <span style="color:var(--cny-red)">休息 (OFF)</span><br>
-            初二 (Feb 18) <span style="color:var(--cny-red)">休息 (OFF)</span><br>
-            <span style="font-size: 0.9rem; color: #666; font-weight: normal;">初三 (Feb 19) 照常营业</span>
-        </p>
-        <button class="close-holiday-btn" onclick="document.getElementById('holidayModal').style.display='none'">我知道了 (Close)</button>
-    </div>
-</div>
-
 <div class="cny-rain" id="cnyRain"></div>
 
 <nav>
@@ -240,13 +192,6 @@
             </div>
         </div>
         <div class="therapist-card">
-            <img src="https://i.postimg.cc/FFSGGTYH/IMG-20260111-WA0011.jpg" class="therapist-img">
-            <div class="therapist-info">
-                <div class="tag">WELLNESS</div><div class="therapist-no">No. 28</div>
-                <p class="therapist-desc">Professional massage techniques for full body rejuvenation.</p>
-            </div>
-        </div>
-        <div class="therapist-card">
             <img src="https://i.postimg.cc/pTGY59pp/IMG-20260111-WA0012.jpg" class="therapist-img">
             <div class="therapist-info">
                 <div class="tag">AROMA</div><div class="therapist-no">No. 13</div>
@@ -309,11 +254,11 @@
             </div>
             <div class="form-group"><label id="staffLabel">Choose Therapist</label>
                 <select id="staff1">
-                    <option>Any Available</option><option>No. 06</option><option>No. 36</option><option>No. 28</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 69</option><option>No. 88</option><option>No. 99</option>
+                    <option>Any Available</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 69</option><option>No. 88</option><option>No. 99</option>
                 </select>
             </div>
             <div class="form-group" id="secondStaffGroup" style="display:none;"><label>Choose Second Therapist</label>
-                <select id="staff2"><option>Any Available</option><option>No. 06</option><option>No. 36</option><option>No. 28</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 69</option><option>No. 88</option><option>No. 99</option></select>
+                <select id="staff2"><option>Any Available</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 69</option><option>No. 88</option><option>No. 99</option></select>
             </div>
             <div class="form-group"><label>Member Status</label>
                 <select id="isVip">
