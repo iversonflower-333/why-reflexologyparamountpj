@@ -208,6 +208,13 @@
             </div>
         </div>
         <div class="therapist-card">
+            <img src="https://i.postimg.cc/Cxjb7dZG/1773316549087.jpg" class="therapist-img img-contain">
+            <div class="therapist-info">
+                <div class="tag">THAI STYLE</div><div class="therapist-no">No. 29</div>
+                <p class="therapist-desc">Professional skill. Authentic master expertly releases pressure in the body.</p>
+            </div>
+        </div>
+        <div class="therapist-card">
             <img src="https://i.postimg.cc/HkqNjhFv/IMG-20260111-WA0015.jpg" class="therapist-img">
             <div class="therapist-info"><div class="tag">DEEP TISSUE</div><div class="therapist-no">No. 65</div><p class="therapist-desc">Targets muscle knots to resolve chronic fatigue effectively.</p></div>
         </div>
@@ -253,13 +260,13 @@
             <div class="form-group"><label id="staffLabel">Choose Therapist</label>
                 <select id="staff1">
                     <option>Any Available</option>
-                    <option>No. 24</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 65</option><option>No. 88</option><option>No. 99</option>
+                    <option>No. 24</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 88</option><option>No. 99</option>
                 </select>
             </div>
             <div class="form-group" id="secondStaffGroup" style="display:none;"><label>Choose Second Therapist</label>
                 <select id="staff2">
                     <option>Any Available</option>
-                    <option>No. 24</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 65</option><option>No. 88</option><option>No. 99</option>
+                    <option>No. 24</option><option>No. 06</option><option>No. 36</option><option>No. 13</option><option>No. 29</option><option>No. 65</option><option>No. 88</option><option>No. 99</option>
                 </select>
             </div>
             <div class="form-group"><label>Member Status</label>
@@ -289,32 +296,4 @@
 <div class="floating-container">
     <a href="https://i.postimg.cc/66GKjNyR/IMG-20260122-WA0036.jpg" class="float-btn" style="background:var(--wechat);" target="_blank"><i class="fab fa-weixin"></i></a>
     <a href="https://t.me/thaimassagepj" class="float-btn" style="background:var(--telegram);" target="_blank"><i class="fab fa-telegram"></i></a>
-    <a href="https://wa.me/60149929316" class="float-btn" style="background:var(--whatsapp);" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-
-<script>
-    function toggleSecondStaff() { 
-        document.getElementById('secondStaffGroup').style.display = document.getElementById('duration').value.includes("Double") ? "block" : "none"; 
-    }
-    
-    document.getElementById('bookingForm').onsubmit = function(e) {
-        e.preventDefault();
-        const vip = document.getElementById('vipRoom').checked ? "Yes (+RM10)" : "No";
-        const text = `Hi WHY Reflexology, I want to book:%0A- Name: ${document.getElementById('name').value}%0A- Time: ${document.getElementById('timeSlot').value}%0A- Service: ${document.getElementById('duration').value}%0A- VIP Room: ${vip}%0A- Therapist: ${document.getElementById('staff1').value}%0A- Status: ${document.getElementById('isVip').value}`;
-        window.open(`https://wa.me/60149929316?text=${text}`, '_blank');
-    };
-
-    const rainContainer = document.getElementById('cnyRain');
-    const icons = ['🎋', '🌿', '🌙'];
-    for (let i = 0; i < 12; i++) {
-        let div = document.createElement('div');
-        div.className = 'red-packet';
-        div.innerText = icons[Math.floor(Math.random() * icons.length)];
-        div.style.left = Math.random() * 100 + 'vw';
-        div.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        div.style.animationDelay = Math.random() * 5 + 's';
-        rainContainer.appendChild(div);
-    }
-</script>
-</body>
-</html>
+    <a href="https://wa.me/60149929316" class="float-btn" style="background:var(--whatsapp
