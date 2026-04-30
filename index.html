@@ -8,22 +8,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --gold: #b38b45; 
-            --dark: #1a1a1a; 
-            --accent: #d32f2f;
+            --purple-deep: #1a0033; /* 极深紫 */
+            --purple-main: #2d004d; /* 皇家紫背景 */
+            --purple-light: #4b0082; /* 浅紫装饰 */
+            --gold: #d4af37;        /* 经典金 */
+            --gold-bright: #f1e5ac;  /* 亮金（用于文字） */
+            --text-gold: #e6c163;    /* 易读金字体 */
             --whatsapp: #25D366; --telegram: #0088cc; --wechat: #07C160; --waze: #33ccff; --gmaps: #4285F4; 
         }
 
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; color: #333; line-height: 1.6; 
-            background-color: #f9f9f9; 
+            margin: 0; 
+            color: var(--gold-bright); 
+            line-height: 1.6; 
+            background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-main) 100%); 
+            background-attachment: fixed;
             scroll-behavior: smooth;
         }
         
         nav { 
-            background: #000; 
-            color: white; 
+            background: rgba(26, 0, 51, 0.95); 
+            color: var(--gold); 
             padding: 0.8rem 1.2rem; 
             display: flex; 
             align-items: center; 
@@ -34,25 +40,27 @@
             border-bottom: 2px solid var(--gold);
         }
         .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: bold; }
-        .nav-logo img { height: 40px; border-radius: 4px; background: #fff; padding: 2px; }
+        .nav-logo img { height: 40px; border-radius: 4px; background: #fff; padding: 2px; border: 1px solid var(--gold); }
         
-        .hours-bar { background: var(--gold); color: #000; text-align: center; padding: 8px; font-weight: bold; font-size: 0.9rem; }
+        .hours-bar { background: var(--gold); color: var(--purple-deep); text-align: center; padding: 8px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; }
         
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1000&q=80'); 
-            height: 35vh; 
+            background: linear-gradient(rgba(26, 0, 51, 0.6), rgba(26, 0, 51, 0.8)), url('https://i.postimg.cc/Hk4LWtC5/IMG-20260110-WA0026-edit-16931000920519.jpg'); 
+            height: 40vh; 
             background-size: cover; 
             background-position: center; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: white; 
+            color: var(--gold-bright); 
             text-align: center; 
+            border-bottom: 2px solid var(--gold);
         }
-        .hero-content img { width: 90px; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--gold); background: #fff; padding: 5px; }
+        .hero-content img { width: 90px; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--gold); background: rgba(255,255,255,0.1); padding: 5px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2.5rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         
         section { padding: 40px 20px; max-width: 1200px; margin: auto; }
-        h2 { text-align: center; color: var(--dark); margin-bottom: 30px; font-size: 1.8rem; text-transform: uppercase; border-bottom: 2px solid var(--gold); display: inline-block; width: 100%; padding-bottom: 10px; }
+        h2 { text-align: center; color: var(--gold); margin-bottom: 30px; font-size: 1.8rem; text-transform: uppercase; border-bottom: 2px solid var(--gold); display: inline-block; width: 100%; padding-bottom: 10px; font-family: 'Playfair Display', serif; }
         
         .vip-card { 
             position: relative; 
@@ -63,53 +71,56 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            border: 3px solid var(--gold); 
+            border: 2px solid var(--gold); 
             margin-bottom: 20px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); 
             overflow: hidden; 
         }
-        .vip-overlay { background: rgba(0,0,0,0.6); width: 100%; height: 100%; padding: 40px 20px; text-align: center; color: white; }
+        .vip-overlay { background: rgba(26, 0, 51, 0.7); width: 100%; height: 100%; padding: 40px 20px; text-align: center; color: var(--gold-bright); }
         .vip-price { font-size: 2.8rem; font-weight: bold; color: var(--gold); text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
 
-        .promo-banner { width: 100%; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.2); background: #000; }
-        .promo-banner img { width: 100%; display: block; }
-        .promo-title { background: var(--gold); color: black; text-align: center; padding: 10px; font-weight: bold; font-size: 1.2rem; }
+        .promo-banner { width: 100%; border-radius: 20px; border: 2px solid var(--gold); margin-bottom: 40px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); background: var(--purple-deep); }
+        .promo-banner img { width: 100%; display: block; border-bottom: 1px solid var(--gold); }
+        .promo-title { background: var(--gold); color: var(--purple-deep); text-align: center; padding: 10px; font-weight: bold; font-size: 1.2rem; }
 
+        .vip-rooms { background: rgba(45, 0, 77, 0.5); border-radius: 20px; padding: 20px; border: 1px solid var(--gold); }
         .vip-room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .vip-room-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
-        .vip-room-img { width: 100%; height: 260px; object-fit: cover; background: #222; display: block; }
-        .vip-upgrade-text { text-align:center; font-weight: bold; color: var(--accent); font-size: 1rem; margin-top: 10px; }
+        .vip-room-card { background: var(--purple-deep); border-radius: 12px; overflow: hidden; border: 1px solid var(--gold); }
+        .vip-room-img { width: 100%; height: 260px; object-fit: cover; display: block; }
+        .vip-upgrade-text { text-align:center; font-weight: bold; color: var(--gold-bright); font-size: 1rem; margin-top: 10px; }
 
         .therapist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 50px; }
-        .therapist-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #eee; display: flex; flex-direction: column; }
-        .therapist-img { width: 100%; height: 260px; object-fit: cover; background: #f0f0f0; display: block; }
-        .img-contain { object-fit: contain !important; background: #222; } 
+        .therapist-card { background: var(--purple-main); border-radius: 12px; overflow: hidden; border: 1px solid var(--gold); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .therapist-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px var(--gold); }
+        .therapist-img { width: 100%; height: 260px; object-fit: cover; display: block; }
+        .img-contain { object-fit: contain !important; background: #000; } 
 
-        .therapist-info { padding: 12px; text-align: center; flex-grow: 1; }
-        .tag { background: #f5f5f5; color: #666; display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-bottom: 6px; border: 1px solid #ddd; }
-        .therapist-no { font-size: 1.1rem; font-weight: bold; color: var(--gold); margin-bottom: 4px; }
-        .therapist-desc { font-size: 0.8rem; color: #666; line-height: 1.3; margin: 0; }
+        .therapist-info { padding: 12px; text-align: center; }
+        .tag { background: var(--gold); color: var(--purple-deep); display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; margin-bottom: 6px; }
+        .therapist-no { font-size: 1.1rem; font-weight: bold; color: var(--gold-bright); margin-bottom: 4px; }
+        .therapist-desc { font-size: 0.8rem; color: #ccb3ff; line-height: 1.3; margin: 0; }
 
-        .booking-container { background: #fff; padding: 30px; border-radius: 15px; margin-bottom: 40px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .booking-container { background: rgba(45, 0, 77, 0.8); padding: 30px; border-radius: 15px; margin-bottom: 40px; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; font-size: 16px; box-sizing: border-box; }
-        .vip-selection { background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid var(--gold); display: flex; align-items: center; gap: 10px; margin-bottom: 15px; cursor: pointer; }
-        .btn-submit { background: #000; color: var(--gold); padding: 18px; border: 1px solid var(--gold); width: 100%; border-radius: 8px; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: var(--gold); color: black; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; color: var(--gold); }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--gold); font-size: 16px; background: var(--purple-deep); color: white; box-sizing: border-box; }
+        .vip-selection { background: var(--purple-deep); padding: 15px; border-radius: 8px; border: 1px solid var(--gold); display: flex; align-items: center; gap: 10px; margin-bottom: 15px; cursor: pointer; color: var(--gold-bright); }
+        .btn-submit { background: var(--gold); color: var(--purple-deep); padding: 18px; border: none; width: 100%; border-radius: 8px; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-submit:hover { background: var(--gold-bright); transform: scale(1.02); }
 
-        .map-iframe { width: 100%; height: 400px; border-radius: 15px; border: 2px solid #eee; margin-top: 20px; }
+        .location-box { background: rgba(26, 0, 51, 0.6); padding: 20px; border-radius: 20px; border: 1px solid var(--gold); text-align: center; }
+        .map-iframe { width: 100%; height: 400px; border-radius: 15px; border: 1px solid var(--gold); margin-top: 20px; }
         .nav-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
-        .nav-btn { flex: 1; padding: 12px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+        .nav-btn { flex: 1; padding: 12px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.3); }
 
         .floating-container { position: fixed; bottom: 30px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
-        .float-btn { width: 55px; height: 55px; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+        .float-btn { width: 55px; height: 55px; border-radius: 50px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); border: 1px solid var(--gold); }
 
         @media (max-width: 600px) {
             .therapist-grid, .vip-room-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .therapist-img { height: 180px; }
             .vip-room-img { height: 150px; }
-            section { padding: 20px 15px; }
+            .hero-content h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -121,116 +132,127 @@
         <span>WHY REFLEXOLOGY</span>
     </div>
     <div style="display: flex; gap: 15px;">
-        <a href="https://t.me/thaimassagepj" target="_blank" style="color:var(--telegram); font-size: 1.5rem;"><i class="fab fa-telegram"></i></a>
+        <a href="https://t.me/thaimassagepj" target="_blank" style="color:var(--gold); font-size: 1.5rem;"><i class="fab fa-telegram"></i></a>
         <a href="https://wa.me/60149929316" target="_blank" style="color:var(--whatsapp); font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
     </div>
 </nav>
 
-<div class="hours-bar">OPEN DAILY: 11:30 AM – 12:00 AM</div>
+<div class="hours-bar">✨ ROYAL THAI SERVICE DAILY: 11:30 AM – 12:00 AM ✨</div>
 
 <div class="hero">
     <div class="hero-content">
         <img src="https://i.postimg.cc/B6J794cr/1768119696555.png" alt="Logo">
         <h1>Pusat Reflexology WHY</h1>
-        <p>Premium Thai Massage & Relaxation in Petaling Jaya</p>
+        <p style="color: var(--gold); font-weight: bold; letter-spacing: 1.5px;">Premium Thai Massage & Royal Relaxation</p>
     </div>
 </div>
 
 <section id="promo">
     <div class="vip-card">
         <div class="vip-overlay">
-            <h2 style="color: #fff; border:none; margin:0; text-shadow: 2px 2px 5px #000;">PREMIUM VIP PROMO</h2>
+            <h2 style="color: var(--gold); border:none; margin:0; text-shadow: 2px 2px 5px #000;">PREMIUM VIP PROMO</h2>
             <div class="vip-price">RM350 / 5 Sessions</div>
-            <p>Authentic Thai Massage Excellence</p>
-            <div style="background: var(--gold); color: #000; padding: 6px 20px; border-radius: 5px; font-weight: bold; margin-top: 15px; display: inline-block;">MEMBER SPECIAL</div>
+            <p style="color: #fff;">Experience Authentic Thai Excellence</p>
+            <div style="background: var(--gold); color: var(--purple-deep); padding: 6px 20px; border-radius: 5px; font-weight: bold; margin-top: 15px; display: inline-block;">VIP MEMBER SPECIAL</div>
         </div>
     </div>
 
     <div class="promo-banner">
-        <div class="promo-title">✨ DOUBLE 4-HAND MASSAGE ✨</div>
+        <div class="promo-title">✨ DOUBLE 4-HAND ROYAL MASSAGE ✨</div>
         <img src="https://i.postimg.cc/8kF74zJH/IMG-20260122-164551.jpg" alt="Double Massage 4-Hand Promo">
-        <div style="padding: 15px; background: #fff; text-align: center; color: var(--dark); font-weight: bold;">
-            <p style="margin: 15px 0; font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--gold); letter-spacing: 1.2px; text-transform: capitalize; font-weight: 600; line-height: 1.4;">
-                Experience the blissful benefits of 4-hands massage on your health
-            </p>
-            <div style="font-size: 1.1rem;">
-                1 Hour: RM140 | 1.5 Hours: RM200 | 2 Hours: RM260
+        <div style="padding: 15px; background: var(--purple-deep); text-align: center; color: var(--gold-bright);">
+            <div style="font-size: 1.2rem; border: 1px dashed var(--gold); padding: 10px; border-radius: 10px;">
+                1 Hr: RM140 | 1.5 Hrs: RM200 | 2 Hrs: RM260
             </div>
         </div>
     </div>
 
     <div class="vip-rooms">
-        <h2>Exclusive VIP Room</h2>
+        <h2>Exclusive VIP Suites</h2>
         <div class="vip-room-grid">
             <div class="vip-room-card"><img src="https://i.postimg.cc/nLxPKYxw/IMG-20260123-233353.jpg" class="vip-room-img"></div>
             <div class="vip-room-card"><img src="https://i.postimg.cc/W1WpF3gy/IMG-20260123-222141-edit-60699783621270.jpg" class="vip-room-img"></div>
             <div class="vip-room-card"><img src="https://i.postimg.cc/pr6k5KVt/IMG-20260123-222224.jpg" class="vip-room-img"></div>
             <div class="vip-room-card"><img src="https://i.postimg.cc/pVj5VVdD/IMG-20260131-011825.jpg" class="vip-room-img"></div>
         </div>
-        <p class="vip-upgrade-text">Upgrade to Private Suite for only +RM10</p>
+        <p class="vip-upgrade-text">✨ Upgrade to Private Suite for only +RM10 ✨</p>
     </div>
 </section>
 
 <section id="therapists">
-    <h2>Meet Our Thailand Therapists</h2>
+    <h2>Elite Thailand Therapists</h2>
     <div class="therapist-grid">
         <div class="therapist-card">
             <img src="https://i.postimg.cc/rpmdvH06/IMG-20260424-WA0002.jpg" class="therapist-img img-contain">
             <div class="therapist-info">
-                <div class="tag">NEW STAR</div><div class="therapist-no">No. 01</div>
-                <p class="therapist-desc">Professional and skilled therapist from Thailand. Expert in relaxation.</p>
-            </div>
-        </div>
-        <div class="therapist-card">
-            <img src="https://i.postimg.cc/s2dwNZ53/Screenshot-20260405-134132.jpg" class="therapist-img img-contain">
-            <div class="therapist-info">
-                <div class="tag">NEW STAR</div><div class="therapist-no">No. 88</div>
-                <p class="therapist-desc">Professional and skilled therapist from Thailand. Expert in relaxation.</p>
+                <div class="tag">TOP STAR</div><div class="therapist-no">No. 01</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
             </div>
         </div>
         <div class="therapist-card">
             <img src="https://i.postimg.cc/28ZVZYNV/IMG-20260401-WA0051.jpg" class="therapist-img img-contain">
             <div class="therapist-info">
-                <div class="tag">NEW STAR</div><div class="therapist-no">No. 02</div>
-                <p class="therapist-desc">Professional and skilled therapist from Thailand. Expert in relaxation.</p>
+                <div class="tag">EXPERT</div><div class="therapist-no">No. 02</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
             </div>
         </div>
         <div class="therapist-card">
-            <img src="https://i.postimg.cc/d0kFQGzR/IMG-20260330-220342-963.jpg" class="therapist-img img-contain">
+            <img src="https://i.postimg.cc/3Jt1HWbm/IMG-20260330-221217-442.jpg" class="therapist-img img-contain">
             <div class="therapist-info">
-                <div class="tag">EXPERT</div><div class="therapist-no">No. 18</div>
-                <p class="therapist-desc">Professional and skilled therapist from Thailand. Expert in relaxation.</p>
+                <div class="tag">POPULAR</div><div class="therapist-no">No. 06</div>
+                <p class="therapist-desc">Expert in deep tissue relaxation.</p>
             </div>
         </div>
         <div class="therapist-card">
-            <img src="https://i.postimg.cc/vmYkjfL2/IMG-20260220-070518-849.jpg" class="therapist-img img-contain">
+            <img src="https://i.postimg.cc/G2vz0Q6V/IMG-20260430-112958-739.jpg" class="therapist-img img-contain">
             <div class="therapist-info">
-                <div class="tag">NEW STAR</div><div class="therapist-no">No. 24</div>
-                <p class="therapist-desc">Professional and skilled therapist from Thailand. Expert in relaxation.</p>
+                <div class="tag">RECOMMENDED</div><div class="therapist-no">No. 08</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
             </div>
         </div>
         <div class="therapist-card">
             <img src="https://i.postimg.cc/pTGY59pp/IMG-20260111-WA0012.jpg" class="therapist-img">
             <div class="therapist-info">
                 <div class="tag">AROMA</div><div class="therapist-no">No. 13</div>
-                <p class="therapist-desc">Specialized in aroma therapy and lymphatic detox. Delicate touch.</p>
+                <p class="therapist-desc">Specialized in aroma detox.</p>
+            </div>
+        </div>
+        <div class="therapist-card">
+            <img src="https://i.postimg.cc/d0kFQGzR/IMG-20260330-220342-963.jpg" class="therapist-img img-contain">
+            <div class="therapist-info">
+                <div class="tag">SKILLED</div><div class="therapist-no">No. 18</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
+            </div>
+        </div>
+        <div class="therapist-card">
+            <img src="https://i.postimg.cc/vmYkjfL2/IMG-20260220-070518-849.jpg" class="therapist-img img-contain">
+            <div class="therapist-info">
+                <div class="tag">NEW STAR</div><div class="therapist-no">No. 24</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
+            </div>
+        </div>
+        <div class="therapist-card">
+            <img src="https://i.postimg.cc/8c1R2VRw/Screenshot-20260430-112832-com-whatsapp.jpg" class="therapist-img img-contain">
+            <div class="therapist-info">
+                <div class="tag">TOP CHOICE</div><div class="therapist-no">No. 39</div>
+                <p class="therapist-desc">Professional skill from Thailand.</p>
             </div>
         </div>
         <div class="therapist-card">
             <img src="https://i.postimg.cc/sx89zdS9/IMG-20260330-220350-266.jpg" class="therapist-img img-contain">
             <div class="therapist-info">
-                <div class="tag">ZEN</div><div class="therapist-no">No. 99</div>
-                <p class="therapist-desc">Leads you into a deep state of Zen relaxation with holistic balance.</p>
+                <div class="tag">ZEN MASTER</div><div class="therapist-no">No. 99</div>
+                <p class="therapist-desc">Deep state of Zen relaxation.</p>
             </div>
         </div>
     </div>
 </section>
 
 <section id="booking">
-    <h2>Quick Booking</h2>
+    <h2>Royal Booking</h2>
     <div class="booking-container">
         <form id="bookingForm">
-            <div class="form-group"><label>Name</label><input type="text" id="name" placeholder="Your Name" required></div>
+            <div class="form-group"><label>Guest Name</label><input type="text" id="name" placeholder="Enter Your Name" required></div>
             <div class="form-group"><label>Arrival Time</label>
                 <select id="timeSlot" required>
                     <option>11:30 AM</option><option>12:00 PM</option><option>12:30 PM</option>
@@ -244,41 +266,35 @@
                     <option>11:30 PM</option><option>12:00 AM</option>
                 </select>
             </div>
-            <label class="vip-selection"><input type="checkbox" id="vipRoom"><span>ADD VIP ROOM (+RM10)</span></label>
-            <div class="form-group"><label>Service & Duration</label>
-                <select id="duration" onchange="toggleSecondStaff()">
+            <label class="vip-selection"><input type="checkbox" id="vipRoom"><span>✨ ADD VIP PRIVATE ROOM (+RM10)</span></label>
+            <div class="form-group"><label>Select Service</label>
+                <select id="duration">
                     <optgroup label="Single Therapist"><option value="Single: 1 Hour (RM80)">Single: 1 Hour (RM80)</option><option value="Single: 1.5 Hours (RM110)" selected>Single: 1.5 Hours (RM110)</option><option value="Single: 2 Hours (RM140)">Single: 2 Hours (RM140)</option></optgroup>
                     <optgroup label="Double 4-Hand Massage"><option value="Double: 1 Hour (RM140)">Double: 1 Hour (RM140)</option><option value="Double: 1.5 Hours (RM200)">Double: 1.5 Hours (RM200)</option><option value="Double: 2 Hours (RM260)">Double: 2 Hours (RM260)</option></optgroup>
                 </select>
             </div>
-            <div class="form-group"><label id="staffLabel">Choose Therapist</label>
+            <div class="form-group"><label>Select Therapist</label>
                 <select id="staff1">
                     <option>Any Available</option>
-                    <option>No. 01</option><option>No. 02</option><option>No. 13</option><option>No. 18</option><option>No. 24</option><option>No. 88</option><option>No. 99</option>
-                </select>
-            </div>
-            <div class="form-group" id="secondStaffGroup" style="display:none;"><label>Choose Second Therapist</label>
-                <select id="staff2">
-                    <option>Any Available</option>
-                    <option>No. 01</option><option>No. 02</option><option>No. 13</option><option>No. 18</option><option>No. 24</option><option>No. 88</option><option>No. 99</option>
+                    <option>No. 01</option><option>No. 02</option><option>No. 06</option><option>No. 08</option><option>No. 13</option><option>No. 18</option><option>No. 24</option><option>No. 39</option><option>No. 99</option>
                 </select>
             </div>
             <div class="form-group"><label>Member Status</label>
                 <select id="isVip">
-                    <option>New Customer</option>
+                    <option>New Guest</option>
                     <option>VIP Member</option>
                     <option>Interested in RM350 Promo</option>
                 </select>
             </div>
-            <button type="submit" class="btn-submit">CONFIRM ON WHATSAPP</button>
+            <button type="submit" class="btn-submit">Confirm Via WhatsApp</button>
         </form>
     </div>
 </section>
 
 <section id="location">
     <h2>Visit Us</h2>
-    <div style="text-align: center;">
-        <p>35, Jalan 20/14, Paramount Garden, 46300 Petaling Jaya, Selangor</p>
+    <div class="location-box">
+        <p style="font-size: 1.1rem; color: var(--gold-bright);">35, Jalan 20/14, Paramount Garden, 46300 Petaling Jaya, Selangor</p>
         <div class="nav-buttons">
             <a href="https://waze.com/ul/hw2838t9p3" class="nav-btn" style="background:var(--waze);"><i class="fab fa-waze"></i> Waze</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Pusat+Reflexology+WHY" target="_blank" class="nav-btn" style="background:var(--gmaps);"><i class="fa fa-map-marked-alt"></i> Google Maps</a>
@@ -294,10 +310,6 @@
 </div>
 
 <script>
-    function toggleSecondStaff() { 
-        document.getElementById('secondStaffGroup').style.display = document.getElementById('duration').value.includes("Double") ? "block" : "none"; 
-    }
-    
     document.getElementById('bookingForm').onsubmit = function(e) {
         e.preventDefault();
         const vip = document.getElementById('vipRoom').checked ? "Yes (+RM10)" : "No";
