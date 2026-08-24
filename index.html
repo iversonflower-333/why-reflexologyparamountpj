@@ -107,6 +107,7 @@
 
         .therapist-info { padding: 15px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; background: rgba(26,0,51,0.5); }
         .tag { background: var(--gold); color: var(--purple-deep); display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin: 0 auto 8px auto; width: fit-content; }
+        .tag-coming { background: #b8860b; color: #fff; } /* COMING SOON 专属标签颜色区分 */
         .therapist-no { font-size: 1.2rem; font-weight: bold; color: var(--gold-bright); margin-bottom: 6px; }
         .therapist-desc { font-size: 0.85rem; color: #ccb3ff; line-height: 1.4; margin: 0; }
 
@@ -214,9 +215,15 @@
         <div class="therapist-card"><img src="https://i.postimg.cc/zXYxKMjs/Screenshot-20260824-230421.jpg" class="therapist-img" alt="No. 01"><div class="therapist-info"><div class="tag">NEW</div><div class="therapist-no">No. 01</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/xT3xh1Ls/Screenshot-20260602-114532-com-whatsapp-edit-15772643501742.jpg" class="therapist-img" alt="No. 13"><div class="therapist-info"><div class="tag">AROMA</div><div class="therapist-no">No. 13</div><p class="therapist-desc">Specialized in aroma detox.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/2SCJSZzD/Screenshot-20260602-114520-com-whatsapp-edit-15796018988296.jpg" class="therapist-img" alt="No. 18"><div class="therapist-info"><div class="tag">SKILLED</div><div class="therapist-no">No. 18</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
-        <div class="therapist-card"><img src="https://i.postimg.cc/28YxVWjj/Screenshot-20260824-230402.jpg" class="therapist-img" alt="No. 98"><div class="therapist-info"><div class="tag">NEW STAR</div><div class="therapist-no">No. 98</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
+        <div class="therapist-card"><img src="https://i.postimg.cc/GpTMk1W8/Screenshot-20260824-230402.jpg" class="therapist-img" alt="No. 98"><div class="therapist-info"><div class="tag">NEW STAR</div><div class="therapist-no">No. 98</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/zDbYsKBN/Screenshot-20260602-114449-com-whatsapp-edit-15856686768012.jpg" class="therapist-img" alt="No. 88"><div class="therapist-info"><div class="tag">VIP</div><div class="therapist-no">No. 88</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/SKvtd1cY/Screenshot-20260602-114526-com-whatsapp-edit-15783844992936.jpg" class="therapist-img" alt="No. 99"><div class="therapist-info"><div class="tag">ZEN MASTER</div><div class="therapist-no">No. 99</div><p class="therapist-desc">Deep state of Zen relaxation.</p></div></div>
+        
+        <!-- Coming Soon 技师 100号 -->
+        <div class="therapist-card"><img src="https://i.postimg.cc/kXFDg6GZ/IMG-20260824-WA0023.jpg" class="therapist-img" alt="No. 100"><div class="therapist-info"><div class="tag tag-coming">COMING SOON</div><div class="therapist-no">No. 100</div><p class="therapist-desc">New professional therapist arriving soon.</p></div></div>
+        
+        <!-- Coming Soon 技师 888号 -->
+        <div class="therapist-card"><img src="https://i.postimg.cc/zvYXJ8rL/IMG-20260824-WA0029.jpg" class="therapist-img" alt="No. 888"><div class="therapist-info"><div class="tag tag-coming">COMING SOON</div><div class="therapist-no">No. 888</div><p class="therapist-desc">New professional therapist arriving soon.</p></div></div>
     </div>
 </section>
 
@@ -242,12 +249,23 @@
             </div>
             <label class="vip-selection"><input type="checkbox" id="vipRoom"><span>✨ ADD VIP PRIVATE ROOM (+RM10)</span></label>
             <div class="form-group"><label>Select Service</label>
-                <select id="duration">
-                    <optgroup label="Single Therapist"><option value="Single: 1 Hour (RM80)">Single: 1 Hour (RM80)</option><option value="Single: 1.5 Hours (RM110)" selected>Single: 1.5 Hours (RM110)</option><option value="Single: 2 Hours (RM140)">Single: 2 Hours (RM140)</option></optgroup>
-                    <optgroup label="Double 4-Hand Massage"><option value="Double: 1 Hour (RM140)">Double: 1 Hour (RM140)</option><option value="Double: 1.5 Hours (RM200)">Double: 1.5 Hours (RM200)</option><option value="Double: 2 Hours (RM260)">Double: 2 Hours (RM260)</option></optgroup>
+                <select id="duration" onchange="toggleStaffFields()">
+                    <optgroup label="Single Therapist">
+                        <option value="Single: 1 Hour (RM80)">Single: 1 Hour (RM80)</option>
+                        <option value="Single: 1.5 Hours (RM110)" selected>Single: 1.5 Hours (RM110)</option>
+                        <option value="Single: 2 Hours (RM140)">Single: 2 Hours (RM140)</option>
+                    </optgroup>
+                    <optgroup label="Double 4-Hand Massage">
+                        <option value="Double: 1 Hour (RM140)">Double: 1 Hour (RM140)</option>
+                        <option value="Double: 1.5 Hours (RM200)">Double: 1.5 Hours (RM200)</option>
+                        <option value="Double: 2 Hours (RM260)">Double: 2 Hours (RM260)</option>
+                    </optgroup>
                 </select>
             </div>
-            <div class="form-group"><label>Select Therapist</label>
+            
+            <!-- 技师1选择 -->
+            <div class="form-group" id="staff1Group">
+                <label id="staff1Label">Select Therapist</label>
                 <select id="staff1">
                     <option>Any Available</option>
                     <option>No. 01</option>
@@ -257,8 +275,28 @@
                     <option>No. 88</option>
                     <option>No. 98</option>
                     <option>No. 99</option>
+                    <option>No. 100 (Coming Soon)</option>
+                    <option>No. 888 (Coming Soon)</option>
                 </select>
             </div>
+
+            <!-- 技师2选择（4-hand 时动态显示） -->
+            <div class="form-group" id="staff2Group" style="display: none;">
+                <label>Select Second Therapist (4-Hand)</label>
+                <select id="staff2">
+                    <option>Any Available</option>
+                    <option>No. 01</option>
+                    <option>No. 06</option>
+                    <option>No. 13</option>
+                    <option>No. 18</option>
+                    <option>No. 88</option>
+                    <option>No. 98</option>
+                    <option>No. 99</option>
+                    <option>No. 100 (Coming Soon)</option>
+                    <option>No. 888 (Coming Soon)</option>
+                </select>
+            </div>
+
             <div class="form-group"><label>Member Status</label>
                 <select id="isVip">
                     <option>New Guest</option>
@@ -277,7 +315,7 @@
     </div>
     <div class="location-box">
         <p style="font-size: 1.1rem; color: var(--gold-bright); margin: 0 0 15px 0;">35, Jalan 20/14, Paramount Garden, 46300 Petaling Jaya, Selangor</p>
-        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3983.844332490861!2d101.62193857500098!3d3.1077864968565574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zM8KwMDYnMzIuMCJOIDEwMcKwMzcnMjguMSJF!5e0!3m2!1szh-CN!2smy!4v1721111111111!5m2!1szh-CN!2smy" allowfullscreen="" loading="lazy"></iframe>
+        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3983.844332490861!2d101.62193857500098!3d3.1077864968565574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zM8KwMDYnMzIuMCJOIDEwMcKwMzcnMjgsMSJF!5e0!3m2!1szh-CN!2smy!4v1721111111111" allowfullscreen="" loading="lazy"></iframe>
         <div class="nav-buttons">
             <a href="https://waze.com/ul/hw2838977z" class="nav-btn" style="background: var(--waze);"><i class="fas fa-car"></i> Waze Location</a>
             <a href="https://maps.google.com/?q=3.107786,101.621938" class="nav-btn" style="background: var(--gmaps);"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
@@ -288,6 +326,57 @@
 <footer>
     <p>© 2026 Pusat Reflexology WHY. All Rights Reserved.</p>
 </footer>
+
+<script>
+    function toggleStaffFields() {
+        const durationSelect = document.getElementById('duration');
+        const staff2Group = document.getElementById('staff2Group');
+        const staff1Label = document.getElementById('staff1Label');
+        
+        // 判断当前选中的是否是 Double 4-Hand 类别
+        if (durationSelect.value.includes('Double')) {
+            staff2Group.style.display = 'block';
+            staff1Label.textContent = 'Select First Therapist (4-Hand)';
+        } else {
+            staff2Group.style.display = 'none';
+            staff1Label.textContent = 'Select Therapist';
+        }
+    }
+
+    // 绑定 WhatsApp 预约发送逻辑
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const time = document.getElementById('timeSlot').value;
+        const vipRoom = document.getElementById('vipRoom').checked ? 'Yes (+RM10)' : 'No';
+        const service = document.getElementById('duration').value;
+        const staff1 = document.getElementById('staff1').value;
+        const isVip = document.getElementById('isVip').value;
+        
+        let message = `*New Royal Booking*%0A` +
+                      `------------------------%0A` +
+                      `*Name:* ${name}%0A` +
+                      `*Time:* ${time}%0A` +
+                      `*Service:* ${service}%0A` +
+                      `*Staff 1:* ${staff1}%0A`;
+                      
+        // 如果是 4-Hand，附带第二个技师信息
+        if (service.includes('Double')) {
+            const staff2 = document.getElementById('staff2').value;
+            message += `*Staff 2:* ${staff2}%0A`;
+        }
+        
+        message += `*VIP Room:* ${vipRoom}%0A` +
+                   `*Status:* ${isVip}`;
+                   
+        const whatsappUrl = `https://wa.me/60149929316?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    // 页面加载时初始化一次
+    toggleStaffFields();
+</script>
 
 </body>
 </html>
