@@ -217,6 +217,7 @@
     <!-- Thailand Therapists 组别 -->
     <div class="subsection-title">👑 Elite Thailand Therapists</div>
     <div class="therapist-grid">
+        <div class="therapist-card"><img src="https://i.postimg.cc/cCsF06zR/IMG-20261009-WA0030.jpg" class="therapist-img" alt="No. 01"><div class="therapist-info"><div class="tag">NEW</div><div class="therapist-no">No. 01</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/qRsrDsVQ/Screenshot-20261009-010917.jpg" class="therapist-img" alt="No. 08"><div class="therapist-info"><div class="tag">NEW</div><div class="therapist-no">No. 08</div><p class="therapist-desc">Professional skill from Thailand.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/g0S152bF/Screenshot-20260602-114502-com-whatsapp-edit-15833278078073.jpg" class="therapist-img" alt="No. 06"><div class="therapist-info"><div class="tag">POPULAR</div><div class="therapist-no">No. 06</div><p class="therapist-desc">Expert in deep tissue relaxation.</p></div></div>
         <div class="therapist-card"><img src="https://i.postimg.cc/xT3xh1Ls/Screenshot-20260602-114532-com-whatsapp-edit-15772643501742.jpg" class="therapist-img" alt="No. 13"><div class="therapist-info"><div class="tag">AROMA</div><div class="therapist-no">No. 13</div><p class="therapist-desc">Specialized in aroma detox.</p></div></div>
@@ -269,6 +270,7 @@
                 <select id="staff1">
                     <option>Any Available</option>
                     <optgroup label="Elite Thailand Therapists">
+                        <option>No. 01</option>
                         <option>No. 08</option>
                         <option>No. 06</option>
                         <option>No. 13</option>
@@ -282,91 +284,4 @@
 
             <!-- 双人四手按摩可选第二个技师 -->
             <div class="form-group" id="staff2Group" style="display: none;">
-                <label>Select 2nd Therapist (Double Massage)</label>
-                <select id="staff2">
-                    <option>Any Available</option>
-                    <optgroup label="Elite Thailand Therapists">
-                        <option>No. 08</option>
-                        <option>No. 06</option>
-                        <option>No. 13</option>
-                        <option>No. 18</option>
-                        <option>No. 69</option>
-                        <option>No. 98</option>
-                        <option>No. 99</option>
-                    </optgroup>
-                </select>
-            </div>
-
-            <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Book via WhatsApp</button>
-        </form>
-    </div>
-</section>
-
-<!-- 地图与地址区域 -->
-<section id="location">
-    <div class="section-title-container">
-        <h2>Location & Contact</h2>
-    </div>
-    <div class="location-box">
-        <h3 style="color: var(--gold); margin-top: 0; font-family: 'Playfair Display', serif; font-size: 1.5rem;">Pusat Reflexology WHY</h3>
-        <p style="color: var(--gold-bright); font-size: 1.1rem; margin: 10px 0;"><i class="fas fa-map-marker-alt" style="color: var(--gold);"></i> 35, Jalan 20/14, Taman Paramount, 46300 Petaling Jaya, Selangor</p>
-        <p style="color: #ccb3ff; margin: 5px 0;"><i class="fas fa-clock" style="color: var(--gold);"></i> Daily: 11:30 AM – 1:00 AM</p>
-        <p style="color: #ccb3ff; margin: 5px 0;"><i class="fas fa-phone-alt" style="color: var(--gold);"></i> +60 14-992 9316</p>
-        
-        <div class="nav-buttons">
-            <a href="https://waze.com/ul?q=35%20Jalan%2020/14%20Taman%20Paramount%20Petaling%20Jaya" target="_blank" class="nav-btn" style="background: var(--waze);"><i class="fab fa-waze"></i> Waze Drive</a>
-            <a href="https://maps.google.com/?q=35,+Jalan+20/14,+Taman+Paramount,+46300+Petaling+Jaya,+Selangor" target="_blank" class="nav-btn" style="background: var(--gmaps);"><i class="fas fa-map-marked-alt"></i> Google Maps</a>
-        </div>
-
-        <iframe class="map-iframe" src="https://maps.google.com/maps?q=35,+Jalan+20/14,+Taman+Paramount,+46300+Petaling+Jaya,+Selangor&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
-    </div>
-</section>
-
-<!-- 右下角快捷联系按钮 -->
-<div class="floating-container">
-    <a href="https://wa.me/60149929316" target="_blank" class="float-btn" style="background: var(--whatsapp);" title="WhatsApp Us"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://t.me/thaimassagepj" target="_blank" class="float-btn" style="background: var(--telegram);" title="Telegram Us"><i class="fab fa-telegram"></i></a>
-</div>
-
-<!-- 页脚 -->
-<footer>
-    <p>&copy; 2026 Pusat Reflexology WHY. All Rights Reserved. | Premium Thai Massage PJ</p>
-</footer>
-
-<!-- 预约及交互逻辑 JS 脚本 -->
-<script>
-function toggleStaffFields() {
-    const duration = document.getElementById('duration').value;
-    const staff2Group = document.getElementById('staff2Group');
-    if (duration.startsWith('Double')) {
-        staff2Group.style.display = 'block';
-    } else {
-        staff2Group.style.display = 'none';
-    }
-}
-
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const time = document.getElementById('timeSlot').value;
-    const duration = document.getElementById('duration').value;
-    const staff1 = document.getElementById('staff1').value;
-    const staff2 = document.getElementById('staff2') ? document.getElementById('staff2').value : '';
-    const vipRoom = document.getElementById('vipRoom').checked ? 'Yes (+RM10)' : 'No';
-
-    let msg = `*New Royal Booking Request*%0A%0A`;
-    msg += `*Name:* ${encodeURIComponent(name)}%0A`;
-    msg += `*Time:* ${encodeURIComponent(time)}%0A`;
-    msg += `*Service:* ${encodeURIComponent(duration)}%0A`;
-    msg += `*VIP Private Room:* ${encodeURIComponent(vipRoom)}%0A`;
-    msg += `*Therapist 1:* ${encodeURIComponent(staff1)}%0A`;
-    if (duration.startsWith('Double') && staff2) {
-        msg += `*Therapist 2:* ${encodeURIComponent(staff2)}%0A`;
-    }
-
-    window.open(`https://wa.me/60149929316?text=${msg}`, '_blank');
-});
-</script>
-
-</body>
-</html>
+    
